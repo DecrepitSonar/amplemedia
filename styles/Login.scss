@@ -1,0 +1,142 @@
+.login_container{
+  height:100vh;
+  width: 100vw;
+  background-color: rgba(0,0,0,.8);
+  position: absolute;
+  align-items: center;
+  justify-content: space-around;
+  display: flex;
+  color: #fff;
+  bottom: 0px;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  z-index: 20;
+}
+.header_image{
+  height: auto;
+  /* width: 50%; */
+  // background-image: url("../public/assets/Landing_Photo3.jpg");
+}
+.closeButton{
+  color: var(--color-tertiary);;
+  position: absolute;
+  z-index: 3;
+  top: 20px;
+  left: 20px;
+  border: 0px;
+  font-size: 2em;
+  background-color: transparent;
+}
+.modal{
+  /* min-height: 70%; */
+  margin: auto;
+  position: relative;
+  background: white;
+  border-radius: 20px;
+  background-color: var(--color-neutral);
+  display: flex;
+  overflow: hidden;
+  z-index: 20;
+}
+.form_title{
+  // color: red;
+  width: 200px;
+  margin: 0px;
+  font-size: 1.5em;
+  font-weight: 300;
+}
+.form_container{
+  height: 100%;
+  text-align: center;
+  padding: 30px 50px;
+  z-index: 20;
+}
+
+.form_container form{
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 400px;
+}
+.form_container input {
+  width: inherit;
+  padding: 10px;
+  outline: 0px;
+  border: 0px;
+  margin: 20px 0px;
+  background-color: inherit;
+  border-bottom: 1px solid #816797;
+  color: var(--color-tertiary);
+}
+.form_container form button {
+  padding: 12px 10px;
+  margin: 20px 0px;
+  border: 0px;
+  border-radius: 10px;
+  font-size: 20px;
+  background-color: var(--color-tertiary);
+  color: #000;
+}
+.errorMessage{
+  margin: auto;
+  color: red;
+}
+.seperator_container{
+  display: flex;
+  align-items: center;
+  color: #555;
+}
+.seperator_container hr {
+  width: 100%;
+  // height: 0.2px;
+  border: .2px solid #555;
+  margin: 0 10px;
+}
+.Other_auth_options{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 20px 0px;
+  color: #000;
+  align-items: center;
+  width: 400px;;
+}
+.Other_auth_options svg{
+  font-size: 20px;
+}
+
+.register_button_container{
+  width: 100%;
+  display: flex;
+  background-color: white;
+  margin: 10px 20px;
+  justify-content: space-around;
+  /* margin: 20px; */
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  align-content: center;
+}
+.register_button{
+  display: flex;
+  align-items: center;
+}
+.register{
+  background-color: inherit;
+  color: rgba($color: #cccc98, $alpha: 0.5);
+  border: 1px solid rgba($color: #cccc98, $alpha: 0.5);
+}
+.register:hover{
+  color: rgba($color: #212121, $alpha: 1);
+  background-color: rgba($color: #cccc98, $alpha: 1);
+}
+.btn_close{
+  margin: 20px;
+  color: rgba($color: #cccc98, $alpha: 0.5);
+}
+.btn_close:hover{
+  color: rgba($color: #cccc98, $alpha: 1);
+}

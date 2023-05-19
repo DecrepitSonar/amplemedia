@@ -1,0 +1,111 @@
+.profileHeader {
+    height: 300px;
+    // width: 100%;
+  
+    background-image: url('../public/assets/kendrick-lamar-variety-hitmakers.webp');
+    text-align: start;
+  }
+  .profileHeader_overlay {
+    height: inherit;
+    width: inherit;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #212129 100%);
+    background-color: transparent;
+    background-position: 0%;
+    background-size: auto;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-origin: padding-box;
+    background-clip: border-box;
+    position: relative;
+    padding: 0 20px;
+  }
+  // .profileHeader_overlay h1 {
+  //   position: absolute;
+  //   bottom: 10px;
+  // }
+  .profileHeader_subscribe {
+    position: absolute;
+    bottom: 0px;
+    padding: 10px 0;
+  }
+  .profileHeader_subscribe button {
+    border: 1px solid #cccc98;
+    color: #cccc98;
+    border-radius: 20px;
+    padding: 5px 20px;
+    margin: 0 20px;
+    transition: all .2s ease-in-out;
+  }
+  .profileHeader_subscribe button:hover{
+    background-color: #cccc98;
+    color: #212129;
+  }
+  .profile_body {
+  
+  }
+  .nav {
+    text-align: left;
+    border-bottom: 0.5px solid rgba($color: #cccc98, $alpha: 0.2);
+  }
+  .nav ul{
+    // padding: 5px 20px;
+    border-radius: 0;
+    margin: 0px;
+  }
+
+  .nav ul li{
+    list-style-type: none;
+    display: inline-block;
+    padding: 5px 20px;
+  }
+  .nav li:not(.active) {
+    color: inherit;
+  }
+  .active{
+    color: rgba($color: #cccc98, $alpha: 1);
+  }
+  
+  // about 
+  .about_body{
+    display: flex;
+    margin: 20px 0px;
+  }
+  .about_body_largeAvi{
+    height: 200px; 
+    width: 200px; 
+    background-color: #333;
+    border-radius: 100px;
+  }
+  .about_body_content{
+    // height: 100px; 
+    width: 500px; 
+    text-align: left;
+    padding: 10px 20px; 
+  }
+  .about_body_content_socials button{
+    color: rgba($color: #cccc98, $alpha: 0.4);
+    padding: 5px;
+    border-radius: 20px;
+    align-items: center;
+    margin-right: 10px;;
+  }
+  .about_body_content_socials button:hover{
+    color: rgba($color: #cccc98, $alpha: 1);
+  }
+  .about_body_content_channelRecommendationss{
+    width: inherit;
+    display: flex;
+    justify-content: space-between;
+  }
+  .about_body_content_channelRecommendationss_avi_container{
+    width: 100px;
+    text-align: center;
+  }
+  
+  .about_body_content_channelRecommendationss_avi {
+    height: 100px; 
+    width: 100px;  
+    border-radius: 50px;
+    background-color: #333;
+    margin-bottom: 10px;
+  }

@@ -1,0 +1,159 @@
+.Logo{
+  margin:20px 10px;
+  font-size: 1.5rem;
+}
+aside {
+    height: 100vh;
+    width: 160px;
+    padding: 10px;;
+    /* // top: 0px;
+    // bottom: 0px;
+    // left: 0px; */
+    padding-top: 100px;
+    background-color: rgba($color: #1F1F1F, $alpha: .2);
+    border-right: 1px solid #2e2929;
+    // z-index: 10;
+  }
+  aside ul{
+    margin-top: 20px;
+    // border:1px solid #2e2929;
+  }
+  aside li{
+    list-style-type: none;
+    transition: all .2s ease-in-out;
+    border:1px solid #2e2929;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  aside li a {
+    color: rgba($color: #cccc98, $alpha: 0.5);
+    padding: 5px;
+    font-size:1.5rem;
+    display: flex;
+    align-items: center;
+    // max-width: 30px;
+    
+  }
+
+  aside li span{
+    margin-left: 20px;
+    font-size:1rem;
+  }
+  aside li a:hover{
+    color: rgba($color: #1F1F1F, $alpha: 1);
+    background-color: rgba($color: #cccc98, $alpha: .7);
+    border-radius: 5px;
+  }
+  .nav{
+    height: auto;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    z-index: 3;
+    padding: 10px;
+    // position: fixed;
+    left: 0px;
+    justify-content: flex-start;
+  }
+  .OpenNav{
+    width: 100px;
+  }
+  .topNav span {
+    color: #cccc98;
+    text-align: start;
+    font-weight: 400;
+    font-size: 12px;
+    z-index: 3;
+  }
+  nav {
+    padding: 0px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    right: 0px;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+    backdrop-filter: blur(1px);
+    justify-content: space-between;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0) 5%, #212129 100%);
+    // align-content: center;
+    position:fixed;
+  }
+  .side {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-width: 1px;
+  }
+  .btn_notification{
+    font-size: 1.3rem;
+    color: rgba($color: #cccc98, $alpha: .5);
+  }
+  .inputContainer {
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    margin: 0 0px;
+    width: 28px;
+    overflow: hidden;
+    transition: all .5s ease-in-out;
+    border: 0.5px solid rgba($color: #cccc98, $alpha: .2);
+  }
+  .inputContainer:hover, 
+  .inputContainer:focus{
+    width: 300px;
+    border: 1px solid rgba($color: #cccc98, $alpha: .5);
+  }
+  .inputContainer i {
+    color: #cccc98;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+  }
+  .inputContainer input {
+    border: 0px;
+    background-color: inherit;
+    width: 100%;
+    color: rgba($color: #cccc98, $alpha: 1);
+    outline: 0;
+  }  
+  .inputContainer input::placeholder{
+    color: rgba($color: #cccc98, $alpha: 0.5)
+  }
+  .buttonOutline {
+    color: #cccc98;
+    border: 1px solid #cccc98;
+    border-radius: 20px;
+    padding: 5px 20px;
+    margin: 0 10px;
+    transition: all .1s ease-in-out;
+  }
+  .buttonOutline:hover {
+    background-color: #cccc98;
+    color: #1F1F1F;
+  }
+  .buttonHighlight {
+    background-color: #cccc98;
+    color: #212129;
+    border-radius: 20px;
+    padding: 5px 20px;
+    margin: 0 10px;
+  }
+  .userAuth{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+  .userAuth span{
+    margin: 0 20px; 
+    font-size: 1.2rem;
+  }
+  .userAuth button i{
+    font-size: 1.5em;;
+  }
+  .userAuth button i{
+    display: flex;
+    align-items: center;
+  }
