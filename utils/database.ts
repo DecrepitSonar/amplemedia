@@ -10,7 +10,7 @@ export const connectToDB = async() =>  {
     await client.connect()
     console.log("connected");
 
-    return client.db("myFirstDatabase")
+    return client.db("AlfaChannnelDev")
   } catch(err ) {
     // Ensures that the client will close when you finish/error
     console.log( err )

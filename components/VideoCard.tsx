@@ -1,16 +1,12 @@
+import { VideoTypes } from '@/Models/types'
 import React from 'react'
-type videoCardPropTypes = {
-    id: string, 
-    artist: string, 
-    description: string, 
-    isLive: bool
-}
-export const VideoCard = (props:videoCardPropTypes ) => {
+
+export const VideoCard = (props:VideoTypes ) => {
 
   return (
     <div>
         {
-            props.isLive && (
+            props.live && (
                     <div className="videoCardContainer">
                         <div className="videoCard"/>
                         <div className="videoCardHeader">
@@ -21,7 +17,7 @@ export const VideoCard = (props:videoCardPropTypes ) => {
                             video.title
                         </span>
                     </div>
-             ) : (
+             ) :  (
                     <div className="videoCardContainer">
                         <div className="videoCard"/>
                         <div className="videoCardHeader">
