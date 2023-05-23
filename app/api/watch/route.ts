@@ -10,14 +10,14 @@ export const GET = async () => {
         
         const featured = await videosCollection.find().toArray()
         const users = await usersCollection.find().limit(8).toArray()
-        const liveVideos = await videos.find({live: true}).toArray()
+        const podcast = await videos.find({catagory: "Podcast"}).toArray()
+        const games = await videos.find({catagory: "games"}).toArray()
         const music = await videos.find({live: false, catagory: "music"}).toArray()
-
-        console.log(liveVideos)
 
         const pageContent = {
             header: {
-                title: "New Releases",
+                title: "Watch",
+                subtitle: "New Releases",
                 videos: featured
             },
             body: [
@@ -27,8 +27,13 @@ export const GET = async () => {
                     type: "users"
                 },
                 {
-                    title: "OnAir",
-                    items: liveVideos,
+                    title: "Podcast",
+                    items: podcast,
+                    type: "videos"
+                },
+                {
+                    title: "Games",
+                    items: games,
                     type: "videos"
                 },
                 {

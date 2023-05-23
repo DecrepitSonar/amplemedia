@@ -53,6 +53,15 @@ export const LoginModal = (props: AuthPropTypes) => {
               password: target.password.value
             }
 
+            fetch("/api/auth",{
+              method: 'POST',
+              mode: "cors",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formData)
+            })
+
           }}  
         >
           <input 
@@ -66,7 +75,7 @@ export const LoginModal = (props: AuthPropTypes) => {
             placeholder="Password "
           />
           <Link href="reset"><span> Forgot password?</span></Link>
-          <button>Sign in </button>
+          <button type="submit">Sign in </button>
           {/* {<span className="errorMessage">{props.errorStatus} </spa}n> */}
         </form>
         <div className="seperator_container">

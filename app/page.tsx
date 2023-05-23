@@ -1,85 +1,76 @@
 'use client'
 import { MdChevronRight } from 'react-icons/md';
-import { IoRadioOutline, IoVolumeMediumOutline, IoVolumeMuteOutline, } from 'react-icons/io5';
+import { IoPauseCircleOutline, IoRadioOutline, IoVolumeMediumOutline, IoVolumeMuteOutline, } from 'react-icons/io5';
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
 import { ReactNode, useEffect, useRef, useState } from 'react';
-import { PageDatatypes, UserTypes, VideoTypes } from '@/Models/types';
+import { HeaderTypes, PageDatatypes, UserTypes, VideoTypes } from '@/Models/types';
+import {usePathname } from 'next/navigation'
 import { VideoCard } from '@/components/VideoCard';
 
-export default function Home() {
-  const [ pageData, setPageData ] = useState<PageDatatypes>()
-  const [ headerVideo, setHeaderVideo] = useState<VideoTypes[]>([])
-  const [headerVideMuted, toggleHeaderVideoVol] = useState<boolean>(true)
-  const router = useRouter()
-  const videoRef = useRef<HTMLVideoElement>()
+export const PageHeaderVideoComponent = ( props: {path: string} ) => {
+    const videoRef = useRef<HTMLVideoElement>()
+    const [ headerVideoIndex, setHeaderVideoIndex] = useState(0)
+    const [ headerData, setHeaderData] = useState<HeaderTypes>()
+    const [ headerVideMuted, toggleHeaderVideoVol] = useState<boolean>(true)
+    const path = usePathname().split('/')[1]
 
-  const [ headerVideoIndex, setHeaderVideoIndex] = useState(0)
+    const getHeaderData = async () => {
+        try {
+            const response = await fetch(`/api/${path == '' ? "watch": path}/featured`)
+            const data = await response.json()
+            // console.log( path )
+            setHeaderData(data)
+        }
+        catch( err ) {
+            console.log( err)
+        }
+    }
 
-  const getPageData = async () => {
-    try {
-        const response = await fetch('/api/watch')
-        await response.json()
-        .then( (data : PageDatatypes) => {
-            setPageData(data)
-            console.log(data)
-            console.log("setting header videos ")
-            setHeaderVideo(data.header.videos)
-            console.log( data.header.videos)
-            handleHeaderVideoSelection(data.header.videos![headerVideoIndex])
-            console.log("settings video")
-        })
-        
-      }
-      catch( err ){
-        console.log( "Error", err )
-      }
+  const handleHeaderVideoChange = () => {
 
+    if( headerVideoIndex == headerData!.videos.length -1 ){
+        setHeaderVideoIndex(0)
+        handleVideoSelection(headerVideoIndex)
+        return
+    }
+    setHeaderVideoIndex(headerVideoIndex+1)
+    handleVideoSelection(headerVideoIndex+1)
   }
 
-  const handleHeaderVideoSelection = (video: VideoTypes) => {
-
+  const handleVideoSelection = (index: number) => {
+    setHeaderVideoIndex(index)
+    console.log( headerData)
     const vid = videoRef.current
-    vid!.poster = video.posterURL
-    vid!.src = video.contentURL
+    
+    if( index == headerVideoIndex && vid.src ) return 
+    vid!.src = headerData!.videos[index].contentURL
     vid!.play()
   }
 
-  const handleHeaderVideoChange = () => {
-    if( headerVideoIndex >= headerVideo!.length -1 ){
-        setHeaderVideoIndex(0)
-        handleHeaderVideoSelection(headerVideo![headerVideoIndex])
-        return
-    }
-
-    setHeaderVideoIndex(headerVideoIndex+1)
-    handleHeaderVideoSelection(headerVideo![headerVideoIndex])
-  }
-  const toggleMuteHeaderVideo = () => {
+  
+  const toggleMute = () => {
     let video = videoRef.current
     if(headerVideMuted)  {
         video!.muted = false
-        console.log( "unmuted")
         toggleHeaderVideoVol(false)
         return
     }  
-    console.log( "muting volume")
+
     toggleHeaderVideoVol(true)
     video!.muted  = true
   }
-  
-  useEffect(() => {
-    console.log("getting page data ")
-    getPageData()
-  },[])
 
-  
-  useEffect(() => {
-  
-  }, [headerVideo])
+    useEffect(()=> { 
+        if( headerData ){
+            handleVideoSelection(headerVideoIndex)
+        }else{
+            getHeaderData()
+        }
+    },[headerData])
 
-  return (
-    <div>
+
+    return( 
         <header>
             <div className="headerPoster">
                 <video 
@@ -94,19 +85,25 @@ export default function Home() {
             </div>
             <section>
                 <div className="sectionHeader">
-                    <span className="sectionHeaderTitle">Watch</span>
-                    <span className="sectionHeaderSubTitle">{pageData?.header.title}</span>
-                    <button onClick={ () => toggleMuteHeaderVideo() }><i>{headerVideMuted? <IoVolumeMuteOutline/> : <IoVolumeMediumOutline/> }</i></button>
+                    <span className="sectionHeaderTitle">{headerData?.title}</span>
+                    <span className="sectionHeaderSubTitle">{headerData?.subtitle}</span>
+                    <button onClick={ () => toggleMute() }><i>{headerVideMuted? <IoVolumeMuteOutline/> : <IoVolumeMediumOutline/> }</i></button>
                 </div>
                 <div className="sectionCollection">
                     
                     {
-                        pageData && (
-                            pageData.header.videos.map( (item: VideoTypes ) : ReactNode => {
-                                
+                        headerData?.videos && (
+                            
+                            headerData.videos.map( (item: VideoTypes, index: number ) : ReactNode => {
+                            console.log( 4)    
                                 return(
-                                 <div onClick={() => handleHeaderVideoSelection(item)} key={item.id} className="videoCardContainer" id='headerVideos'>
-                                    <div className="videoCard" style={{"backgroundImage": `url(https://prophile.nyc3.cdn.digitaloceanspaces.com/images/${item.posterURL}.jpg)`}}/>
+                                 <div  
+                                 onClick={() => handleVideoSelection(index)} 
+                                 key={item.id} 
+                                 className='videoCardContainer'>
+                                    <div className='videoCard' style={{"backgroundImage": `url(https://prophile.nyc3.cdn.digitaloceanspaces.com/images/${item.posterURL}.jpg)`}}>
+                                        <div className={`videoCardOverlay ${headerVideoIndex == index ? "videoCardActive" : ""}`}><i><IoPauseCircleOutline/></i></div>
+                                    </div>
                                     <div className="videoCardHeader">
                                         <div className="headerAvi" style={{"backgroundImage": `url(https://prophile.nyc3.cdn.digitaloceanspaces.com/images/${item.userImageURL}.jpg)`}}/>
                                         <span>{item.user}</span>
@@ -116,13 +113,39 @@ export default function Home() {
                                     </span>
                                 </div>
                                 )
-
                             })
                         )
                     }
                 </div>
             </section>
         </header>
+    )
+}
+export default function Home() {
+  const [ pageData, setPageData ] = useState<PageDatatypes>()
+  const router = useRouter()
+  
+  const getPageData = async () => {
+    try {
+        const response = await fetch('/api/watch')
+        const data = await response.json()
+         setPageData(data)
+      }
+      catch( err ){
+        console.log( "Error", err )
+      }
+  }
+
+  useEffect(() => {
+    getPageData()
+  },[])
+
+  const path = "watch/featured"
+  return (
+    <div>
+            {
+            
+             pageData && ( <PageHeaderVideoComponent path={"watch/featured"}/>) }
             {
                 pageData && (
                     pageData.body.map( (section) : ReactNode => {
@@ -134,10 +157,9 @@ export default function Home() {
                                     <span className="sectionHeaderSubTitle">{section.title} <Link href={"/live"}><i><MdChevronRight/></i></Link></span>
                                 </div>
                                 <div className="sectionCollection">
-                                  {  section.items.map( (user: UserTypes) : ReactNode => {
+                                  {  section.items.map( (user: UserTypes ) : ReactNode => {
                                         return ( 
-
-                                        <div key={user.id} className="largeAviComponentContainer" onClick={() => {router.push('/user')} }>
+                                        <div key={user.id} className="largeAviComponentContainer" onClick={() => {router.push(`/user/${user.id}`)} }>
                                             <div className="largeAvi" style={{"backgroundImage": `url(https://prophile.nyc3.cdn.digitaloceanspaces.com/images/${user.imageURL}.jpg)`}}/>
                                             <span>{user.name} </span>
                                         </div>
@@ -155,24 +177,7 @@ export default function Home() {
                                         <div className="sectionCollection">
                                         {
                                             section.items.map( (item: VideoTypes) : ReactNode=> {
-                                                return(
-                                                <div key={item.id} className="videoCardContainer">
-                                                    <div className="videoCard" style={{"backgroundImage":`url(https://prophile.nyc3.cdn.digitaloceanspaces.com/images/${item.posterURL}.jpg)`}}/>
-                                                    <div className="videoCardHeader" >
-                                                        <div className="headerAvi" style={{"backgroundImage":`url(https://prophile.nyc3.cdn.digitaloceanspaces.com/images/${item.userImageURL}.jpg)`}}/>
-                                                        <span>{item.user}</span>
-                                                    </div>
-                                                    <span className="videoCardDescription">
-                                                        {item.title}
-                                                    </span>
-                                                    {
-                                                        item.live ? 
-                                                        <span className='live-status'><i><IoRadioOutline/></i> {item.views} Watching</span> :
-                                                        <span className='live-status'> {item.views} Views</span>
-                                                    }
-                                                </div>
-                                                )
-
+                                                return( <VideoCard key={item.id} video={item}/> )
                                             })
                                         }
                                         </div>
@@ -185,37 +190,3 @@ export default function Home() {
     </div>
   )
 }
-
-
-                    // <div className="videoCardContainer">
-                    //     <div className="videoCard"></div>
-                    //     <div className="videoCardHeader">
-                    //         <div className="headerAvi"/>
-                    //         <span>Artist</span>
-                    //     </div>
-                    //     <span className="videoCardDescription">
-                    //         Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    //     </span>
-                    // </div>
-
-                    // <div className="videoCardContainer">
-                    //     <div className="videoCard"></div>
-                    //     <div className="videoCardHeader">
-                    //         <div className="headerAvi"/>
-                    //         <span>Artist</span>
-                    //     </div>
-                    //     <span className="videoCardDescription">
-                    //         Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    //     </span>
-                    // </div>
-
-                    // <div className="videoCardContainer">
-                    //     <div className="videoCard"></div>
-                    //     <div className="videoCardHeader">
-                    //         <div className="headerAvi"/>
-                    //         <span>Artist</span>
-                    //     </div>
-                    //     <span className="videoCardDescription">
-                    //         Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    //     </span>
-                    // </div>

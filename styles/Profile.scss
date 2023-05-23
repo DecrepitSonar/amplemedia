@@ -3,6 +3,8 @@
     // width: 100%;
   
     background-image: url('../public/assets/kendrick-lamar-variety-hitmakers.webp');
+    background-position: center;
+    background-size: cover;
     text-align: start;
   }
   .profileHeader_overlay {
@@ -68,7 +70,11 @@
   // about 
   .about_body{
     display: flex;
-    margin: 20px 0px;
+    margin: 20px;
+  }
+  .about_body h3,
+  .about_body h6{
+    margin:20px 0;
   }
   .about_body_largeAvi{
     height: 200px; 
@@ -78,16 +84,24 @@
   }
   .about_body_content{
     // height: 100px; 
-    width: 500px; 
+    width: 50%; 
     text-align: left;
     padding: 10px 20px; 
   }
+  .about_body_content_socials{
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
   .about_body_content_socials button{
     color: rgba($color: #cccc98, $alpha: 0.4);
     padding: 5px;
     border-radius: 20px;
     align-items: center;
     margin-right: 10px;;
+    font-size: 1.3rem;
+    
   }
   .about_body_content_socials button:hover{
     color: rgba($color: #cccc98, $alpha: 1);
@@ -100,6 +114,7 @@
   .about_body_content_channelRecommendationss_avi_container{
     width: 100px;
     text-align: center;
+    margin: 0px 20px;
   }
   
   .about_body_content_channelRecommendationss_avi {

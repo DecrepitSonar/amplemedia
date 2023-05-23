@@ -1,285 +1,56 @@
-import React from 'react'
+'use client'
+import React, { ReactNode, useEffect, useState } from 'react'
 import { RxRadiobutton } from 'react-icons/rx'
 import { MdChevronRight, MdHomeFilled } from 'react-icons/md';
 import { IoRadioOutline } from 'react-icons/io5';
+import { PageDatatypes, VideoTypes } from '@/Models/types';
+import { VideoCard } from '@/components/VideoCard';
+import { PageHeaderVideoComponent } from '../page';
 
 export default function Live() {
+
+    const [ pageData, setPageData] = useState<PageDatatypes>()
+
+    const getPageData = async () => {
+        try{
+            const response = await fetch( '/api/live')
+            const data = await response.json()
+            console.log( data )
+            setPageData(data)
+        }
+        catch( err){
+            console.log( err )
+        }
+    }
+
+    useEffect(() => {
+        getPageData()
+    },[])
   return (
     <div>
-        <header>
-            <div className="headerPoster" style={{"backgroundImage": `url(/assets/JID-Money-Video-2.webp)`}}>
-                <div className="headerPosterOverlay"></div>
-            </div>
-            <section>
+        {pageData && ( <PageHeaderVideoComponent path={"live"}/>) }
+
+        { 
+            pageData && (
+            pageData.body.map( (section, index) : ReactNode=> {
+               return(
+                <section key={index}>
                 <div className="sectionHeader">
-                    <span className="sectionHeaderTitle">On Air</span>
-                    <span className="sectionHeaderSubTitle"><i style={{"color": "red", "marginRight": "10px", "opacity": ".7"}}><RxRadiobutton/></i>Now</span>
+                    <span className="sectionHeaderSubTitle">{section.title} <i><MdChevronRight/></i></span>
                 </div>
                 <div className="sectionCollection">
-
-                    <div className="videoCardContainer">
-                        <div className="videoCard"/>
-                        <div className="videoCardHeader">
-                            <div  className="headerAvi"/>
-                            <span>artist</span>
-                        </div>
-                        <span className="videoCardDescription">
-                            video.title
-                        </span>
-                        <span className='live-status'><i><IoRadioOutline/></i> 12312 Watching</span>
-                    </div>
-                    
-                    <div className="videoCardContainer">
-                        <div className="videoCard"/>
-                        <div className="videoCardHeader">
-                            <div  className="headerAvi"/>
-                            <span>artist</span>
-                        </div>
-                        <span className="videoCardDescription">
-                            video.title
-                        </span>
-                        <span className='live-status'><i><IoRadioOutline/></i> 12312 Watching</span>
-                    </div>
-                    
-
-                    <div className="videoCardContainer">
-                        <div className="videoCard"/>
-                        <div className="videoCardHeader">
-                            <div  className="headerAvi"/>
-                            <span>artist</span>
-                        </div>
-                        <span className="videoCardDescription">
-                            video.title
-                        </span>
-                        <span className='live-status'><i><IoRadioOutline/></i> 12312 Watching</span>
-                    </div>
-                    
-
-                    <div className="videoCardContainer">
-                        <div className="videoCard"/>
-                        <div className="videoCardHeader">
-                            <div  className="headerAvi"/>
-                            <span>artist</span>
-                        </div>
-                        <span className="videoCardDescription">
-                            video.title
-                        </span>
-                        <span className='live-status'><i><IoRadioOutline/></i> 12312 Watching</span>
-                    </div>
-                    
-                </div>
+                {
+                    section.items.map( (item: VideoTypes) : ReactNode => {
+                        return(  <VideoCard key={item.id} video={item}/> )
+                    })
+                }
+                  
+                </div>    
             </section>
-        </header>
+               )
 
-        <section>
-            <div className="sectionHeader">
-                <span className="sectionHeaderSubTitle">Live streams <i><MdChevronRight/></i></span>
-            </div>
-            <div className="sectionCollection">
-
-                <div className="videoCardContainer">
-                    <div className="videoCard"></div>
-                    <div className="videoCardHeader">
-                        <div className="headerAvi"/>
-                        <span>Artist</span>
-                    </div>
-                    <span className="videoCardDescription">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    </span>
-                    <span className='live-status'><i><IoRadioOutline/></i> 12312 Watching</span>
-                </div>
-
-                <div className="videoCardContainer">
-                    <div className="videoCard"></div>
-                    <div className="videoCardHeader">
-                        <div className="headerAvi"/>
-                        <span>Artist</span>
-                    </div>
-                    <span className="videoCardDescription">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    </span>
-                    <span className='live-status'><i><IoRadioOutline/></i> 12312 Watching</span>
-                </div>
-
-                <div className="videoCardContainer">
-                    <div className="videoCard"></div>
-                    <div className="videoCardHeader">
-                        <div className="headerAvi"/>
-                        <span>Artist</span>
-                    </div>
-                    <span className="videoCardDescription">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    </span>
-                    <span className='live-status'><i><IoRadioOutline/></i> 12312 Watching</span>
-                </div>
-
-                <div className="videoCardContainer">
-                    <div className="videoCard"></div>
-                    <div className="videoCardHeader">
-                        <div className="headerAvi"/>
-                        <span>Artist</span>
-                    </div>
-                    <span className="videoCardDescription">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    </span>
-                    <span className='live-status'><i><IoRadioOutline/></i> 12312 Watching</span>
-                </div>
-
-                <div className="videoCardContainer">
-                    <div className="videoCard"></div>
-                    <div className="videoCardHeader">
-                        <div className="headerAvi"/>
-                        <span>Artist</span>
-                    </div>
-                    <span className="videoCardDescription">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    </span>
-                    <span className='live-status'><i><IoRadioOutline/></i> 12312 Watching</span>
-                </div>
-
-                <div className="videoCardContainer">
-                    <div className="videoCard"></div>
-                    <div className="videoCardHeader">
-                        <div className="headerAvi"/>
-                        <span>Artist</span>
-                    </div>
-                    <span className="videoCardDescription">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    </span>
-                    <span className='live-status'><i><IoRadioOutline/></i> 12312 Watching</span>
-                </div>
-
-                <div className="videoCardContainer">
-                    <div className="videoCard"></div>
-                    <div className="videoCardHeader">
-                        <div className="headerAvi"/>
-                        <span>Artist</span>
-                    </div>
-                    <span className="videoCardDescription">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    </span>
-                    <span className='live-status'><i><IoRadioOutline/></i> 12312 Watching</span>
-                </div>
-
-                <div className="videoCardContainer">
-                    <div className="videoCard"></div>
-                    <div className="videoCardHeader">
-                        <div className="headerAvi"/>
-                        <span>Artist</span>
-                    </div>
-                    <span className="videoCardDescription">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    </span>
-                    <span className='live-status'><i><IoRadioOutline/></i> 12312 Watching</span>
-                </div>
-
-            </div>    
-        </section>
-
-        <section>
-            <div className="sectionHeader">
-                <span className="sectionHeaderSubTitle">Games <i><MdChevronRight/></i></span>
-            </div>
-            <div className="sectionCollection">
-
-                <div className="videoCardContainer">
-                    <div className="videoCard"></div>
-                    <div className="videoCardHeader">
-                        <div className="headerAvi"/>
-                        <span>Artist</span>
-                    </div>
-                    <span className="videoCardDescription">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    </span>
-                    <span className='live-status'><i><IoRadioOutline/></i> 12312 Watching</span>
-                </div>
-
-                <div className="videoCardContainer">
-                    <div className="videoCard"></div>
-                    <div className="videoCardHeader">
-                        <div className="headerAvi"/>
-                        <span>Artist</span>
-                    </div>
-                    <span className="videoCardDescription">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    </span>
-                    <span className='live-status'><i><IoRadioOutline/></i> 12312 Watching</span>
-                </div>
-
-                <div className="videoCardContainer">
-                    <div className="videoCard"></div>
-                    <div className="videoCardHeader">
-                        <div className="headerAvi"/>
-                        <span>Artist</span>
-                    </div>
-                    <span className="videoCardDescription">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    </span>
-                    <span className='live-status'><i><IoRadioOutline/></i> 12312 Watching</span>
-                </div>
-
-                <div className="videoCardContainer">
-                    <div className="videoCard"></div>
-                    <div className="videoCardHeader">
-                        <div className="headerAvi"/>
-                        <span>Artist</span>
-                    </div>
-                    <span className="videoCardDescription">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    </span>
-                    <span className='live-status'><i><IoRadioOutline/></i> 12312 Watching</span>
-                </div>
-
-                <div className="videoCardContainer">
-                    <div className="videoCard"></div>
-                    <div className="videoCardHeader">
-                        <div className="headerAvi"/>
-                        <span>Artist</span>
-                    </div>
-                    <span className="videoCardDescription">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    </span>
-                    <span className='live-status'><i><IoRadioOutline/></i> 12312 Watching</span>
-                </div>
-
-                <div className="videoCardContainer">
-                    <div className="videoCard"></div>
-                    <div className="videoCardHeader">
-                        <div className="headerAvi"/>
-                        <span>Artist</span>
-                    </div>
-                    <span className="videoCardDescription">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    </span>
-                    <span className='live-status'><i><IoRadioOutline/></i> 12312 Watching</span>
-                </div>
-
-                <div className="videoCardContainer">
-                    <div className="videoCard"></div>
-                    <div className="videoCardHeader">
-                        <div className="headerAvi"/>
-                        <span>Artist</span>
-                    </div>
-                    <span className="videoCardDescription">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    </span>
-                    <span className='live-status'><i><IoRadioOutline/></i> 12312 Watching</span>
-                </div>
-
-                <div className="videoCardContainer">
-                    <div className="videoCard"></div>
-                    <div className="videoCardHeader">
-                        <div className="headerAvi"/>
-                        <span>Artist</span>
-                    </div>
-                    <span className="videoCardDescription">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    </span>
-                    <span className='live-status'><i><IoRadioOutline/></i> 12312 Watching</span>
-                </div>
-
-            </div>    
-        </section>
+            }))
+        }
     </div>
   )
 }

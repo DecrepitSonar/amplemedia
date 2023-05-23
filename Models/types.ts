@@ -31,7 +31,12 @@ export type PageDatatypes = {
     body: 
     {
         title: string, 
-        items: VideoTypes[],
+        items: any[],
         type: string
     }[]
+}
+export type  HeaderTypes = {
+    title: string, 
+    subtitle: string,
+    videos: VideoTypes[] 
 }

@@ -10,12 +10,12 @@ aside {
     // bottom: 0px;
     // left: 0px; */
     padding-top: 100px;
-    background-color: rgba($color: #1F1F1F, $alpha: 1);
+    background-color: rgba($color: #000, $alpha: 0.5);
     border-right: 1px solid #2e2929;
     // z-index: 10;
   }
   aside ul{
-    margin-top: 20px;
+    margin-top: 10px;
     // border:1px solid #2e2929;
   }
   aside li{
@@ -34,6 +34,12 @@ aside {
     align-items: center;
     // max-width: 30px;
     
+  }
+  aside label{
+    // border: 1px solid red;
+    margin: 0px 5px;
+    // padding: 20px;
+    color: rgba($color: #cccc98, $alpha: .3)
   }
 
   aside li span{
