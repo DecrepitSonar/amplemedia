@@ -40,3 +40,43 @@ export type  HeaderTypes = {
     subtitle: string,
     videos: VideoTypes[] 
 }
+export type LoginFormTypes = {
+    email: string,
+    password: string,
+  }
+export type SignupFormTypes = {
+    username: string, 
+    email: string,
+    password: string
+}
+
+export type UserAuthType = {
+    id: string,
+    imageURL: string,
+    headerPosterURL: string,
+    username: string,
+    email: string,
+    bio: string,
+    subscriptionCount: number,
+    Type: string,
+    Subscriptions: {}[],
+    Histories: {}[],
+    BookMarks: {}[],
+    Posts: {}[],
+    paymentCredential: {},
+    Setting:{}
+    apiKey: string
+}
+
+export type AuthPropTypes = {
+    modalOpen: boolean,
+    formType: string,
+    setForm: Function
+    toggleModal: Function
+
+}
+
+export type FormTypes = {
+    setForm: Function
+    toggleModal: Function
+}

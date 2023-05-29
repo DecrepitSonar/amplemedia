@@ -3,9 +3,17 @@ import Link from 'next/link'
 import { useParams, useRouter } from 'next/navigation'
 import { use, useEffect, useState } from 'react'
 import { useSearchParams, usePathname } from 'next/navigation'
-import { UserTypes } from '@/Models/types'
+import { UserTypes } from '@/utils/types'
 import { profile } from 'console'
 
+// const ActiveLinke = ({children, href}) => {
+//     const router = useRouter() 
+//     const style = {
+      
+//     }
+//     return() 
+//   }
+  
 export const Nav = () => {
 
 const [ activeLink, setActiveLink ] = useState("")

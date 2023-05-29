@@ -1,6 +1,10 @@
 @import "./navigations.scss";
 @import "./Profile.scss";
 @import "./Login.scss";
+@import "./searchPage.scss";
+@import "./browse.scss";
+@import './settings.scss';
+@import './videoPage.scss';
 
 :root {
     /* // max-width: 1280px; */
@@ -43,7 +47,7 @@ a {
 
 main{
   height: 100vh;
-  width: calc(100vw - 200px);
+  width: 100%;
   overflow-y: scroll;
 }
 nav{
@@ -86,8 +90,6 @@ header .sectionHeader button i:hover{
   background-repeat: no-repeat;
   // background-image: url(attr(data-image)); 
 }
-
-
 
 .headerPosterOverlay {
   position: absolute;
@@ -256,48 +258,20 @@ section >
   margin-bottom: 20px;
 }
 
-/* // Seatch */
-.SearchFilter {
-  /* // border: 1px solid #cccc98; */
-  display: flex;
-  padding: 10px 20px;
-  align-items: center;
-}
-.searchInput {
-  display: flex;
-  padding: 0px 20px;
-}
-.SearchFilter button {
-  border: 1px solid #cccc98;
-  color: #cccc98;
-  padding: 5px 20px;
-  border-radius: 20px;
-  margin: 0 5px;
-  font-size: 0.5rem;
-}
-.SearchFilter button:hover {
-    background-color: #cccc98;
-    color: #000;
-}
-.SearchFilter button:nth-child(2) {
-  background-color: #cccc98;
-  color: #000;
-}
-.searchList_videoContainer,
-.searchList_channelItemContainer {
-  width: 85%;
-  padding: 10px;
+.video_list_item_videoContainer,
+.channel_list_item_container {
+  // padding: 10px;
   display: flex;
   flex-direction: row;
   grid-auto-flow: column;
   background-color: rgba(0, 0, 0, 0.07);
   border-radius: 10px;
-  margin: 15px 20px;
+  margin: 15px auto;
   position: relative;
 }
 
-.searchList_videoContainer button,
-.searchList_channelItemContainer button {
+.video_list_item_videoContainer button,
+.channel_list_item_container button {
   position: absolute;
   right: 20px;
   top: 20px;
@@ -305,234 +279,31 @@ section >
   background-color: transparent;
 }
 
-.searchList_videoContainer button:hover,
-.searchList_channelItemContainer button:hover {
+.video_list_item_videoContainer button:hover,
+.channel_list_item_container button:hover {
   color: #cccc98;
 }
-
-.SearchList_header  > span{
+.list_header{
+  margin-left: 20px;
+  padding: 20px;
+}
+.list_header  > span{
   font-size: .7rem;
 }
-.searchList_videoItem {
-  height: 125px;
-  width: 210px;
+.list_header p{
+  margin-top: 10px;;
+}
+.video_list_item_image {
+  height: 175px;
+  width: 300px;
   background-color: #ffffff;
   border-radius: 10px;
   margin: auto 0;
 }
-.SearchPage{
-  // padding-top: 100px;
-  padding: 100px 20px;
-  // position: absolute;
-  // left: 0; 
-  // right: 0;
-  // bottom: 0; 
-  // top: 0;
-  // background-color: #212129;
-
-}
-.SearchList_videoHeader {
-  display: flex;
-  margin: 0 20px;
-  padding: 20px;
-  flex-direction: column;
-  align-items: start;
-}
-.SearchList_header {
-  flex-direction: column;
-  text-align: left;
-  padding: 10px 20px;
-}
-.SearchList_header p {
-  font-size: 0.8rem;
-}
-.SearchList_header > div {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-.seatchList_channelAVI {
-  height: 25px;
-  width: 25px;
-  background-color: #333;
-  border-radius: 20px;
-  margin: auto 0;
-  margin-right: 20px;
-}
-.searchList_description {
-  width: 300px;
-  height: inherit;
-  text-align: start;
-  padding: 0px 20px;
-  margin-left: 20px;
-}
-.searchList_channelItem {
+.channelItem_list_image {
   height: 120px;
   width: 120px;
   margin: 0 45px;
   border-radius: 75px;
   background-color: #333333;
-}
-
-/* //Video */
-.videoPageContainer {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 100px;
-}
-
-.videoSection {
-  // height: 100%;
-  width: 100%;
-  display: flex;
-  padding:  20px;
-}
-.videoSection_header {
-  height:100%;
-  width: inherit;
-  background-image: url('../public/assets/channels4_profile.jpg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  overflow: hidden;
-}
-.videoSection_header_overlay {
-  height: inherit;
-  width: inherit;
-  background: repeat padding-box border-box 0% / auto scroll
-      linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(33, 33, 41, 0.95) 88%),
-    repeat padding-box border-box 50% 50% / 100% 100% scroll
-      linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #212129 62%);
-  position: relative;
-}
-.videoPlayerContainer {
-  // position: absolute;
-  // bottom: 0;
-  // margin: 20px;
-
-}
-.videoPlayer {
-  height: 600px;
-  // width: 800px;
-  background-color: #333;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-.videoPlayer_description {
-  /* // height: 100px; */
-  overflow: hidden;
-}
-.videoPlayer_description_author {
-  display: flex;
-}
-.channelAvi {
-  height: 25px;
-  width: 25px;
-  background-color: #333;
-  border-radius: 20px;
-  margin: auto 0;
-  margin-right: 20px;
-}
-.videoPlayer_description_author_title {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  margin-bottom: 20px;
-}
-.videoPlayer_description_author_title  span:nth-child(2){
-  font-size: .9rem;;
-}
-.commentSection {
-  padding: 20px;
-  text-align: start;
-  border-top: 0.5px solid rgba($color: #cccc98, $alpha: .2);
-}
-.commentSection_inputSection {
-  display: flex;
-  margin-top: 20px;
-  font-size: 0.9rem;
-  color: rgba($color: #cccc98, $alpha: .5)
-}
-.description{
-  color: #eee;
-  font-size: .9rem;
-  width: 100%;
-}
-.commentSection_inputSection input {
-  width: 100%;
-  padding: 10px 0px;
-  background-color: inherit;
-  border: 0px;
-  border-bottom: 0.1px solid #cccc98;
-  outline: 0;
-  color: rgba($color: #cccc98, $alpha: .5)
-}
-.commentItem_container {
-  width: 100%;
-  margin: 20px 0;
-  padding: 20px 0;
-  display: flex;
-  flex-direction: column;
-  border-top: 0.6px solid rgba($color: #cccc98, $alpha: .2);
-  // align-items: first baseline;
-  // max-width: 600px;
-}
-.commentItem_container p{
-  margin: 10px 0;
-  font-size: medium;
-}
-.commentItem_author {
-  display: flex;
-}
-.commentItem_buttons {
-  display: flex;
-  align-items: center;
-  font-size: 0.8rem;
-  color:rgba($color: #cccc98, $alpha: .5)
-}
-.commentItem_buttons button {
-  display: flex;
-  color:rgba($color: #cccc98, $alpha: .5);
-  font-size: 0.8rem;
-}
-.commentItem_buttons i {
-  margin-right: 10px;
-}
-.commentItem_buttons span {
-  margin: 0 20px;
-}
-
-.sideSection {
-  max-width: 400px;
-;
-}
-.recommendations {
-  /* // width: 300px; */
-  text-align: start;
-}
-.recommendations_videoCollection {
-  /* // height: 100px; */
-}
-.recommendations_videoCollection_video_container {
-  height: inherit;
-  display: flex;
-  margin: 5px 0;
-}
-.recommendations_videoCollection_video {
-  height: 100px;
-  width: 180px;
-  background-color: #333;
-  border-radius: 5px;
-  margin: auto;
-}
-.recommendations_videoCollections_video_details {
-  width: 200px;
-  display: flex;
-  flex-direction: column;
-  padding: 0 10px;
-}
-.details {
-  font-size: 0.7em;
-}
-.recommendations_videoCollections_video_details_title {
-  font-size: 0.9em;
 }

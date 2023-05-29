@@ -13,6 +13,7 @@ aside {
     background-color: rgba($color: #000, $alpha: 0.5);
     border-right: 1px solid #2e2929;
     // z-index: 10;
+    position: relative;
   }
   aside ul{
     margin-top: 10px;
@@ -50,6 +51,22 @@ aside {
     color: rgba($color: #1F1F1F, $alpha: 1);
     background-color: rgba($color: #cccc98, $alpha: .7);
     border-radius: 5px;
+  }
+  .bottom_buttons{
+    position: absolute;
+    bottom: 0px;
+    border-top: 1px solid rgba($color: #cccc98, $alpha: 0.1);
+    left: 0px; 
+    right: 0px; 
+    bottom: 0px;
+  }
+  .bottom_buttons button{
+    color: rgba($color: #cccc98, $alpha: .5);
+    font-size: 1.1rem;
+    padding: 10px;
+  }
+  .bottom_buttons a:hover{
+    color: rgba($color: #cccc98, $alpha: 1);
   }
   .nav{
     height: auto;

@@ -13,9 +13,9 @@ export default function Search() {
                 <button>Podcast</button>
             </div>
 
-            <div className="searchList_videoContainer">
-                <div className="searchList_videoItem"/>
-                <div className="SearchList_header">
+            <div className="video_list_item_videoContainer">
+                <div className="video_list_item_image"/>
+                <div className="list_header">
                     <div>
                         <div className="seatchList_channelAVI"/>
                         <span>Channel Name</span>
@@ -26,9 +26,9 @@ export default function Search() {
                 <button><IoEllipsisHorizontal/></button>
             </div>
 
-            <div className="searchList_channelItemContainer">
-                <div className="searchList_channelItem"/>
-                <div className="SearchList_header">
+            <div className="channel_list_item_container">
+                <div className="channelItem_list_image"/>
+                <div className="list_header">
                     <div>
                         <span>Channel Name</span>
                     </div>
@@ -37,9 +37,9 @@ export default function Search() {
                 <button><IoEllipsisHorizontal/></button>
             </div>
 
-            <div className="searchList_channelItemContainer">
-                <div className="searchList_channelItem"/>
-                <div className="SearchList_header">
+            <div className="channel_list_item_container">
+                <div className="channelItem_list_image"/>
+                <div className="list_header">
                     <div>
                         <span>Channel Name</span>
                     </div>

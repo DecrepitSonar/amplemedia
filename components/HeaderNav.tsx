@@ -1,23 +1,27 @@
 "use client"
-import React, { useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { IoCloseCircleOutline, IoCogOutline, IoSearch } from 'react-icons/io5';
 import Link from 'next/link';
-import path from 'path';
 import { useRouter } from 'next/navigation';
 import { LoginModal } from './LoginModal';
+import { useAppDispatch } from '@/utils/Store';
+import { validateSession } from '@/utils/authSlice';
 
 export const HeaderNav = () => {
+    
+    const auth = useSelector( ( state: RootState) => state.auth)
 
-    // const authState = useSelector( (state: RootState) => state.auth )
-    // const dispatch = useDispatch()
-
-    const [authState , setAuthState ] = useState(false)
     const router = useRouter()
     const [ modalOpen, toggleModal ] = useState(false)
     const [ formType, setForm ] = useState("login")
+    const dispatch = useAppDispatch()
     
+    useEffect(() => {
+        console.log('validating session ')
+        dispatch(validateSession())
+    },[])
+
   return (
 
     <nav>
@@ -31,9 +35,7 @@ export const HeaderNav = () => {
             
         <div className="side">
             <div className="inputContainer">
-                 <i>
-                    <IoSearch/>
-                </i>
+                 <i><IoSearch/></i>
                 <input 
                     type="text" 
                     placeholder="Search"
@@ -41,15 +43,10 @@ export const HeaderNav = () => {
                         <i><IoCloseCircleOutline/></i>
             </div>
             { 
-                authState ? 
+                auth.LoggedIn ? 
                 <div className="userAuth">
-                    <Link href="/user">
-                    <span>Username</span>
-                    </Link>
-                    <Link href="/user"><div className="channelAvi"/></Link>
-                    
-                    {/* {<button onClick={() => navigate(`/user/settings/${authState.user.id}`) className='btn_notification'><HiOutlineBell/></button>} */}
-                    <Link href={"/settings"} className='btn_notification'><IoCogOutline/></Link>
+                    <span>{auth.user.username}</span>
+                    <div onClick={() => router.push('/profile')} style={{"backgroundImage": `url(https://prophile.nyc3.cdn.digitaloceanspaces.com/images/${auth.user.imageURL}.jpg)`}} className="channelAvi"/>
                 </div>
                 :
             <div className="userAuth">

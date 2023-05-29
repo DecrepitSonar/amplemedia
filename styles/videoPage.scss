@@ -1,0 +1,90 @@
+.videoPageContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+  }
+  
+  .videoSection {
+    // height: 100%;
+    width: 100%;
+    display: flex;
+    padding:  0 20px;
+  }
+  .videoSection_header {
+    height:100%;
+    width: inherit;
+    background-image: url('../public/assets/channels4_profile.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    overflow: hidden;
+  }
+  .videoSection_header_overlay {
+    height: inherit;
+    width: inherit;
+    background: repeat padding-box border-box 0% / auto scroll
+        linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(33, 33, 41, 0.95) 88%),
+      repeat padding-box border-box 50% 50% / 100% 100% scroll
+        linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #212129 62%);
+    position: relative;
+  }
+  .videoPlayerContainer {
+    // position: absolute;
+    // bottom: 0;
+    // margin: 20px;
+  
+  }
+  .videoPlayer {
+    height: 600px;
+    // width: 800px;
+    background-color: #333;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  .videoPlayer_description {
+    /* // height: 100px; */
+    overflow: hidden;
+  }
+  .videoPlayer_description_author {
+    display: flex;
+  }
+  .channelAvi {
+    height: 25px;
+    width: 25px;
+    background-color: #333;
+    border-radius: 20px;
+    margin: auto 0;
+    margin-right: 20px;
+  }
+  .videoPlayer_description_author_title {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  .videoPlayer_description_author_title  span:nth-child(2){
+    font-size: .9rem;;
+  }
+  .commentSection {
+    padding: 20px;
+    text-align: start;
+    border-top: 0.5px solid rgba($color: #cccc98, $alpha: .2);
+  }
+  .commentSection_inputSection {
+    display: flex;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: rgba($color: #cccc98, $alpha: .5)
+  }
+  .description{
+    color: #eee;
+    font-size: .9rem;
+    width: 100%;
+  }
+  
+  .sideSection {
+    width: 600px;
+    margin: 0 20px;
+    // border: 1px solid red;
+    background-color: rgba($color: #000, $alpha: .2);
+    border-radius: 10px;
+  }

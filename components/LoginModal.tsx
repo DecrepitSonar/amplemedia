@@ -1,40 +1,33 @@
 'use client'
+import { RootState, useAppDispatch } from "@/utils/Store"
+import { login, register } from "@/utils/authSlice"
+import { AuthPropTypes, FormTypes, LoginFormTypes, SignupFormTypes } from "@/utils/types"
 import Link from "next/link"
 import { useState } from "react"
 import { FaApple,
     FaGooglePlusG,
     FaFacebookF } from "react-icons/fa"
+import { useSelector } from "react-redux"
 
-type AuthPropTypes = {
-    modalOpen: boolean,
-    formType: string,
-    setForm: Function
-    toggleModal: Function
 
-}
-type FormTypes = {
-    setForm: Function
-    toggleModal: Function
-}
 export const LoginModal = (props: AuthPropTypes) => {
+  const auth = useSelector( ( state: RootState) => state.auth)
     
     return (
       <div className="login_container" 
-        style={props.modalOpen ?{"display" : "flex"} : {"display" : "none"}}
+        style={props.modalOpen && !auth.LoggedIn ? {"display" : "flex"} : {"display" : "none"}}
       >
         { props.formType == "login" ? <Login setForm={props.setForm} toggleModal={props.toggleModal} /> 
         : <RegisterModal setForm={props.setForm} toggleModal={props.toggleModal} />}
       </div>
     )
-  }
-  
-  type LoginFormTypes = {
-    email: string,
-    password: string,
-  }
-  
+  }  
+
   const Login = (props: FormTypes) => {
-  
+    
+    const dispatch = useAppDispatch() 
+    const auth = useSelector( ( state: RootState) => state.auth)
+
     return(
       <div className="modal">
       <div className="form_container">
@@ -48,19 +41,15 @@ export const LoginModal = (props: AuthPropTypes) => {
               password: { value: string };
             };
             
-            const formData = {
+            const formData: LoginFormTypes = {
               email: target.email.value, 
               password: target.password.value
             }
 
-            fetch("/api/auth",{
-              method: 'POST',
-              mode: "cors",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(formData)
-            })
+            console.log( "sending login inputs")
+            dispatch(login(formData))
+        
+            props.toggleModal(!auth.LoggedIn)
 
           }}  
         >
@@ -76,7 +65,7 @@ export const LoginModal = (props: AuthPropTypes) => {
           />
           <Link href="reset"><span> Forgot password?</span></Link>
           <button type="submit">Sign in </button>
-          {/* {<span className="errorMessage">{props.errorStatus} </spa}n> */}
+          <span className="errorMessage">{auth.error} </span>
         </form>
         <div className="seperator_container">
           <hr/> Or <hr/>
@@ -99,30 +88,31 @@ export const LoginModal = (props: AuthPropTypes) => {
   
   const RegisterModal = (props: FormTypes) => {
   
-    const [authData, setAuthData ] = useState({})
+    const [authData, setAuthData ] = useState<SignupFormTypes>()
     const [passwordValidation, setPasswordValidation] = useState("")
   
-    // const dispatch = useDispatch<any>()
+    const dispatch = useAppDispatch()
+    const auth = useSelector( ( state: RootState) => state.auth)
   
     const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
   
-      setAuthData({
+      const {name, value } = e.currentTarget
+
+      setAuthData( {
           ...authData,
-          [e.currentTarget.name]: e.currentTarget.value
+          [name]: value
         })
     }
   
-  
-    
     const handleSubmit = async ( e: React.SyntheticEvent) => {
       e.preventDefault()
   
       try{ 
         await verifyPasswords()
-        // dispatch(register(authData))
+        dispatch(register(authData))
       }
       catch( err){  
-        console.log("")
+        console.log(err)
       }
      
     }
@@ -165,7 +155,7 @@ export const LoginModal = (props: AuthPropTypes) => {
   
               <br/>
               <button type="submit">Sign up </button>
-              {/* {<span className="errorMessage">{props.errorStatus} </span>} */}
+              {<span className="errorMessage">{auth.error} </span>}
             </form>
             <div className="seperator_container">
               <hr/> Or <hr/>

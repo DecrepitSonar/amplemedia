@@ -1,0 +1,40 @@
+
+/* // Seatch */
+.SearchFilter {
+  /* // border: 1px solid #cccc98; */
+  display: flex;
+  padding: 10px 20px;
+  align-items: center;
+}
+.searchInput {
+  display: flex;
+  padding: 0px 20px;
+}
+.SearchFilter button {
+  border: 1px solid #cccc98;
+  color: #cccc98;
+  padding: 5px 20px;
+  border-radius: 20px;
+  margin: 0 5px;
+  font-size: 0.5rem;
+}
+.SearchFilter button:hover {
+    background-color: #cccc98;
+    color: #000;
+}
+.SearchFilter button:nth-child(2) {
+  background-color: #cccc98;
+  color: #000;
+}
+
+.SearchPage{
+  // padding-top: 100px;
+  padding: 100px 20px;
+  // position: absolute;
+  // left: 0; 
+  // right: 0;
+  // bottom: 0; 
+  // top: 0;
+  // background-color: #212129;
+
+}

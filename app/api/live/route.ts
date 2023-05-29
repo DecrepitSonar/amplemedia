@@ -1,7 +1,9 @@
 import { connectToDB } from "@/utils/database"
 
-export const GET = async () => {
+export const GET = async (response: Response, { params }) => {
 
+    // switch( )
+    console.log( params )
     try{
         const db = await connectToDB()
         const featuredb = db!.collection('featuredLive')
@@ -21,11 +23,13 @@ export const GET = async () => {
             body: [
                 {
                     title: "Games",
-                    items: games
+                    items: games,
+                    link: "games"
                 },
                 {
                     title: "Podcasts",
-                    items: podcasts
+                    items: podcasts,
+                    link: "podcast"
                 }
             ]
         }

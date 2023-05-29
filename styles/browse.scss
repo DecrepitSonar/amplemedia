@@ -1,0 +1,23 @@
+.catalogContainer{
+    height: 100vh;
+    padding: 100px 20px 0;
+}
+.page_catalogHeader{
+}
+.cataog_items_container{
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(2, auto);
+    gap: 20px;
+    margin-top: 20px;
+}
+.catalog_card_item{
+    border-radius: 10px;
+    text-align: center;
+    height: 250px;
+    display: flex;
+    background-color: #111;
+}
+.catalog_card_item span{
+    margin: auto;
+}
