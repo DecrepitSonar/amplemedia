@@ -5,7 +5,7 @@ import { IoCloseCircleOutline, IoCogOutline, IoSearch } from 'react-icons/io5';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { LoginModal } from './LoginModal';
-import { useAppDispatch } from '@/utils/Store';
+import { RootState, useAppDispatch } from '@/utils/Store';
 import { validateSession } from '@/utils/authSlice';
 
 export const HeaderNav = () => {

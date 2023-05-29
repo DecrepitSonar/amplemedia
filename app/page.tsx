@@ -3,7 +3,7 @@ import { MdChevronRight } from 'react-icons/md';
 import Link from "next/link";
 import { useParams, useRouter } from 'next/navigation';
 import { ReactNode, useEffect, useState } from 'react';
-import {UserTypes, VideoTypes } from '@/utils/types';
+import {PageDatatypes, UserTypes, VideoTypes } from '@/utils/types';
 import { VideoCard } from '@/components/VideoCard';
 import { PageHeader } from '@/components/PageHeader';
 

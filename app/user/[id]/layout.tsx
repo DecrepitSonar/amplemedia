@@ -14,7 +14,7 @@ import { profile } from 'console'
 //     return() 
 //   }
   
-export const Nav = () => {
+const Nav = () => {
 
 const [ activeLink, setActiveLink ] = useState("")
 const params = useParams()
@@ -57,7 +57,7 @@ export default function layout({children} : {  children: React.ReactNode }) {
   )
 }
 
-export const ProfileHeader = () => {
+const ProfileHeader = () => {
     const [ profileData, setProfileData ] = useState<UserTypes>()
     const params = useParams()
 

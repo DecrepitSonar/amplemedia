@@ -7,7 +7,7 @@ import { UserAuthType } from '@/utils/types'
 
 export default function Profile() {
 
-  const auth = useSelector( ( state: RootState) => state.auth.user)<UserAuthType>
+  const auth: UserAuthType = useSelector( ( state: RootState) => state.auth.user)
 
   return (
     <div className="library_profile_container">

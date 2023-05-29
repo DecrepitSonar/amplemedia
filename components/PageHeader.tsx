@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { ReactNode, useEffect, useRef, useState } from 'react'
 import { usePathname } from "next/navigation"
 import { IoPauseCircleOutline, IoVolumeHighOutline, IoVolumeMuteOutline } from 'react-icons/io5'
-import { HeaderTypes } from '@/utils/types'
+import { HeaderTypes, VideoTypes } from '@/utils/types'
 
 export const PageHeader =  ( props: {path: string} ) => {
     const videoRef = useRef<HTMLVideoElement>()

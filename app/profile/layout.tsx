@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 import { useRouter, usePathname} from 'next/navigation'
 
 export const ProfileNavHeader = () => {
-    const auth = useSelector( ( state: RootState) => state.auth.user)<UserAuthType>
+    const auth: UserAuthType = useSelector( ( state: RootState) => state.auth.user)
     const router = useRouter()
     const path = usePathname().split('/')
     const currentPath = path[path.length -1 ]
