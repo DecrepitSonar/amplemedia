@@ -11,7 +11,7 @@ export const ProfileNavHeader = () => {
     const router = useRouter()
     const path = usePathname().split('/')
     const currentPath = path[path.length -1 ]
-
+  
   return (
     <>
       <h1>Profile</h1>
@@ -34,28 +34,11 @@ export const ProfileNavHeader = () => {
   )
 }
 
-export const LayoutWrapperBody = ( props) => {
-  const {children} = props
-  const isLoggedIn = useSelector( ( state: RootState) => state.auth.LoggedIn)
-  return (
-    <div>
-      {
-      isLoggedIn ? 
-        <div className="library_profile_container">
-          <ProfileNavHeader/>
-          <div className="library_body">{children}</div>
-        </div>
-      :  <h1></h1>
-    }
-    </div>
-  )
-}
-
-
 export default function layout({children}) {
   return (
-    <div>
-      <LayoutWrapperBody children={children}/>
+      <div className="library_profile_container">
+          <ProfileNavHeader/>
+          <div className="library_body">{children}</div>
     </div>
   )
 }
