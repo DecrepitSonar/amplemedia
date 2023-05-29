@@ -1,9 +1,7 @@
 import { connectToDB } from "@/utils/database"
 
-export const GET = async (response: Response, { params }) => {
+export const GET = async (response: Response) => {
 
-    // switch( )
-    console.log( params )
     try{
         const db = await connectToDB()
         const featuredb = db!.collection('featuredLive')
