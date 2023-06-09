@@ -36,19 +36,24 @@ export default function Home() {
                         switch( section.type){
                             case "users": 
                             return(
-                                <section>
+                                <section className="aviSection">
                                 <div className="sectionHeader">
                                     <span className="sectionHeaderSubTitle">{section.title} <Link href={`/${section.title.toLocaleLowerCase()}`}><i><MdChevronRight/></i></Link></span>
                                 </div>
-                                <div className="sectionCollection">
-                                  {  section.items.map( (user: UserTypes ) : ReactNode => {
-                                        return ( 
-                                        <div key={user.id} className="largeAviComponentContainer" onClick={() => {router.push(`/user/${user.id}`)} }>
-                                            <div className="largeAvi" style={{"backgroundImage": `url(https://prophile.nyc3.cdn.digitaloceanspaces.com/images/${user.imageURL}.jpg)`}}/>
-                                            <span>{user.name} </span>
+                                <div className="sectionCollection ">
+                                    <div className="aviiCollectionContainer">
+                                        <div className="aviCollection">
+                                        {  section.items.map( (user: UserTypes ) : ReactNode => {
+                                                return ( 
+                                                
+                                                    <div key={user.id} className="largeAviComponentContainer" onClick={() => {router.push(`/user/${user.id}`)} }>
+                                                        <div className="largeAvi" style={{"backgroundImage": `url(https://prophile.nyc3.cdn.digitaloceanspaces.com/images/${user.imageURL}.jpg)`}}/>
+                                                        <span>{user.name} </span>
+                                                    </div>
+                                                )
+                                            })}
+                                            </div>
                                         </div>
-                                        )
-                                    })}
                                     </div>
                                 </section>)
                             break;

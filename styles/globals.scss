@@ -63,24 +63,6 @@ header {
   position: relative;
   overflow: hidden;
 }
-header .sectionHeader button{
-  position: absolute;
-  right: 40px;
-  bottom: 20px;
-  border: 1px solid rgba($color: #cccc98, $alpha: .5);
-  padding: 5px;
-  border-radius: 50%;
-}
-header .sectionHeader button i{
-  font-size: 2em;
-  display: flex;
-  align-items: center;
-  color: rgba($color: #cccc98, $alpha: .5);;
-  transition: all .5 ease-in-out;
-}
-header .sectionHeader button i:hover{
-  color: rgba($color: #cccc98, $alpha: 1);;
-}
 .headerPoster {
   height: 900px;
   width: inherit;
@@ -104,16 +86,41 @@ header .sectionHeader button i:hover{
   background-position: 0%;
   opacity: .9;
 }
-header section {
+.headerSection {
   width: inherit;
   position: absolute;
+  height: 425px;
   bottom: 0px;
+  // border: 1px solid orange;
+  right: 0px;
+  left: 0px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 section {
   width: inherit;
   border-bottom: 1px solid #2e2929;
   margin-top: 10px;
   padding-bottom: 10px;
+  // border: 1px solid red;
+  position: relative;
+}
+.progressbarContainer{
+  height: 2px; 
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  left: 0px; 
+  right: 0px; 
+  // border: 1px solid red;
+  z-index: 20;
+}
+.progressbar{
+  height: inherit;
+  width: 200px; 
+  background-color: rgba($color: #cccc98, $alpha: .5);
+  translate: all .3s ease-in-out;
 }
 .sectionHeader {
   display: flex;
@@ -125,6 +132,7 @@ section {
 .sectionHeaderTitle {
   font-weight: 400;
   font-size: 4em;
+  // border: 1px solid red;
 }
 
 .sectionHeaderSubTitle {
@@ -140,15 +148,62 @@ section {
 }
 .sectionCollection {
   margin: 20px;
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  position: relative;
+}
+.aviSection{
+  height: 300px;
+  overflow: hidden;
+}
+.aviiCollectionContainer{
+  position: absolute;
+  left: 0px; 
+  right: 0px; 
+  bottom: 0px; 
+  top: 0px;
+  // border: 1px solid red;
   display: flex;
-  flex-wrap: wrap;
-  justify-items: flex-start;
-  gap: 20px;
+  height: 200px;
+  overflow-x: scroll;
+}
+
+.aviCollection{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.itemWrapper{
+  height: 282px;
+  overflow: hidden;
+  position: relative;
+  scroll-behavior: smooth;
+}
+.itemWrapper::-webkit-scrollbar{
+  display: none;
+}
+.itemPagerContainer{
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+}
+.itemPagerContainer_active{
+background-color: rgba($color: #cccc98, $alpha: .7);
+}
+.itemPagerSelectorDot{
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba($color: #cccc98, $alpha: .7);;
+  margin: 5px;
 }
 .videoCardContainer {
   max-width:340px;
-  position: relative;
-  margin-bottom: 20px;
+  // position: relative;
+  // border: 1px solid orange;
+  margin-bottom: 20px;;
 }
 .videoCardOverlay{
   top: 0px;
@@ -187,7 +242,7 @@ section {
 }
 .videoCard {
   height: 200px;
-  width: 340px;
+  width: 100%;
   background-color: #333;
   border-radius: 10px;
   margin-bottom: 5px;
@@ -235,6 +290,7 @@ section >
   margin: 20px;
   width: inherit;
   text-align: center;
+  // border: 1px solid red;
 }
 .largeAviComponentContainer span{
   display: block;
@@ -245,6 +301,7 @@ section >
   width: 120px;
   background-color: #333;
   border-radius: 50%;
+  margin: auto;
   margin-bottom: 10px;
   background-position: center;
   background-size: cover;
@@ -270,7 +327,6 @@ section >
   position: relative;
 }
 
-.video_list_item_videoContainer button,
 .channel_list_item_container button {
   position: absolute;
   right: 20px;
@@ -278,8 +334,31 @@ section >
   color: #ddd;
   background-color: transparent;
 }
+.headerPoster button{
+  color: #ddd;
+  background-color: transparent;
+  z-index: 40;
+}
 
-.video_list_item_videoContainer button:hover,
+.headerPoster button{
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  border: 1px solid rgba($color: #cccc98, $alpha: .5);
+  padding: 5px;
+  border-radius: 50%;
+}
+.headerPoster  button i{
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  color: rgba($color: #cccc98, $alpha: .5);;
+  transition: all .5 ease-in-out;
+}
+.headerPoster button i:hover{
+  color: rgba($color: #cccc98, $alpha: 1);;
+}
+.headerPoster button:hover,
 .channel_list_item_container button:hover {
   color: #cccc98;
 }
@@ -306,4 +385,13 @@ section >
   margin: 0 45px;
   border-radius: 75px;
   background-color: #333333;
+}
+
+
+@media   ( max-width:  858px ){
+  .aside{
+    position: absolute;
+    display: none;;
+    border: 1px solid red;
+  }
 }
