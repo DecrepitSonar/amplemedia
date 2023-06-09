@@ -146,19 +146,34 @@ section {
   display: flex;
   align-items: center;
 }
+.sectionHeaderCollection{
+  display: flex;
+  padding: 20px;
+}
 .sectionCollection {
   margin: 20px;
-  width: 100%;
+  // width: 100%;
   height: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 340px));
+  position: relative;
+  gap: 20px;
+  justify-content: space-around;
+}
+.aviCollectionContainer {
+  margin: 20px 0;
+  // width: 100%;
+  height: auto;
+  // display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   position: relative;
 }
 .aviSection{
   height: 300px;
   overflow: hidden;
+  margin: 20px 0;
 }
-.aviiCollectionContainer{
+.aviCollectionWrapper{
   position: absolute;
   left: 0px; 
   right: 0px; 
@@ -176,10 +191,13 @@ section {
   justify-content: space-between;
 }
 .itemWrapper{
-  height: 282px;
+  height: 270px;
+  width: 430px;
+  max-width: 340px;
   overflow: hidden;
   position: relative;
   scroll-behavior: smooth;
+  margin-right: 10px;;
 }
 .itemWrapper::-webkit-scrollbar{
   display: none;
@@ -200,9 +218,10 @@ background-color: rgba($color: #cccc98, $alpha: .7);
   margin: 5px;
 }
 .videoCardContainer {
-  max-width:340px;
+  // max-width:340px;
   // position: relative;
   // border: 1px solid orange;
+  // margin: auto;
   margin-bottom: 20px;;
 }
 .videoCardOverlay{
@@ -385,13 +404,4 @@ section >
   margin: 0 45px;
   border-radius: 75px;
   background-color: #333333;
-}
-
-
-@media   ( max-width:  858px ){
-  .aside{
-    position: absolute;
-    display: none;;
-    border: 1px solid red;
-  }
 }

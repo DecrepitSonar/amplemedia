@@ -115,7 +115,7 @@ export const PageHeader =  ( props: {path: string} ) => {
                     <span className="sectionHeaderTitle">{headerData?.title}</span>
                     <span className="sectionHeaderSubTitle">{headerData?.subtitle}</span>
                 </div>
-                <div className="sectionCollection">
+                <div className="sectionHeaderCollection">
                     <div ref={videoContainerRef} className="itemWrapper">
                     {
                         headerData?.videos && (

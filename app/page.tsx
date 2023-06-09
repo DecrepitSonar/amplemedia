@@ -40,8 +40,8 @@ export default function Home() {
                                 <div className="sectionHeader">
                                     <span className="sectionHeaderSubTitle">{section.title} <Link href={`/${section.title.toLocaleLowerCase()}`}><i><MdChevronRight/></i></Link></span>
                                 </div>
-                                <div className="sectionCollection ">
-                                    <div className="aviiCollectionContainer">
+                                <div className="aviCollectionContainer  ">
+                                    <div className="aviCollectionWrapper">
                                         <div className="aviCollection">
                                         {  section.items.map( (user: UserTypes ) : ReactNode => {
                                                 return ( 

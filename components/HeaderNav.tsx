@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { IoCloseCircleOutline, IoCogOutline, IoSearch } from 'react-icons/io5';
+import {RxHamburgerMenu } from 'react-icons/rx'
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { LoginModal } from './LoginModal';
@@ -31,7 +32,11 @@ export const HeaderNav = () => {
         modalOpen={modalOpen} 
         formType={formType}
         />
-        <h1 className='Logo'> Logo</h1>
+        <div className='Logo'>
+        <button id='headerMenu'><i><RxHamburgerMenu/></i></button>
+        <h1 >Logo</h1>
+        </div>
+        
             
         <div className="side">
             <div className="inputContainer">
