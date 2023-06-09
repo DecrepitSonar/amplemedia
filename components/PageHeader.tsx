@@ -7,7 +7,7 @@ export const PageHeader =  ( props: {path: string} ) => {
     const [curretnVideoTime, setCurrentVideotime] = useState(0)
 
     const videoRef = useRef<HTMLVideoElement>()
-    const videoContainerRef = useRef<HTMLElement>()
+    const videoContainerRef = useRef<HTMLDivElement>()
     const [ headerVideoIndex, setHeaderVideoIndex] = useState(0)
     const [ headerData, setHeaderData] = useState<HeaderTypes>()
     const [ headerVideMuted, toggleHeaderVideoVol] = useState<boolean>(true)
@@ -53,7 +53,7 @@ export const PageHeader =  ( props: {path: string} ) => {
     if( headerVideoIndex == 0){
         videocontainer.scrollTo(0, 0)
     }
-    
+
     videocontainer.scrollTo(0, (videocontainer.scrollHeight / 4)*index) 
 
   }
@@ -104,7 +104,7 @@ export const PageHeader =  ( props: {path: string} ) => {
                     autoPlay={true}  
                     muted 
                     onEnded={() => handleHeaderVideoChange()}
-                    onTimeUpdate={(e) => updatetime(e) }
+                    onTimeUpdate={() => updatetime() } 
                     className="headerPoster">
                     <source  type='video/mp4'/>
                 </video>
