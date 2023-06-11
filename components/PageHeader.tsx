@@ -96,19 +96,23 @@ export const PageHeader =  ( props: {path: string} ) => {
 
 
     return( 
-        <header>
+
+        <header style={ headerData?.videos ? {'backgroundImage': `url(https://prophile.nyc3.cdn.digitaloceanspaces.com/images/${headerData.videos[headerVideoIndex].posterURL}.jpg)`} : null}>
             <div className="headerPoster">
-            <button onClick={ () => toggleMute() }><i>{headerVideMuted? <IoVolumeMuteOutline/> : <IoVolumeHighOutline/> }</i></button>
+                <button onClick={ () => toggleMute() }><i>{headerVideMuted? <IoVolumeMuteOutline/> : <IoVolumeHighOutline/> }</i></button>
                 <video 
                     ref={videoRef} 
                     autoPlay={true}  
                     muted 
                     onEnded={() => handleHeaderVideoChange()}
                     onTimeUpdate={() => updatetime() } 
-                    className="headerPoster">
+                    className="headerPosterVideo">
                     <source  type='video/mp4'/>
                 </video>
                 <div className="headerPosterOverlay"/>
+                <div className="progressbarContainer">
+                        <div className="progressbar" style={progressBarStyle}/>
+                </div>
             </div>
             <section className='headerSection'>
                 <div className="sectionHeader">
@@ -155,9 +159,6 @@ export const PageHeader =  ( props: {path: string} ) => {
                     </div>
                    
                 </div>
-                <div className="progressbarContainer">
-                        <div className="progressbar" style={progressBarStyle}/>
-                    </div>
             </section>
         </header>
     )

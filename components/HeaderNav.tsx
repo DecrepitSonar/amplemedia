@@ -3,19 +3,23 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { IoCloseCircleOutline, IoCogOutline, IoSearch } from 'react-icons/io5';
 import {RxHamburgerMenu } from 'react-icons/rx'
+import { AiOutlineClose } from 'react-icons/ai'
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { LoginModal } from './LoginModal';
 import { RootState, useAppDispatch } from '@/utils/Store';
 import { validateSession } from '@/utils/authSlice';
+import { toggleNav } from '@/utils/navigationSlice';
 
 export const HeaderNav = () => {
     
     const auth = useSelector( ( state: RootState) => state.auth)
+    const navOpen = useSelector( (state: RootState) => state.navigationSlice.navOpen)
 
     const router = useRouter()
     const [ modalOpen, toggleModal ] = useState(false)
     const [ formType, setForm ] = useState("login")
+
     const dispatch = useAppDispatch()
     
     useEffect(() => {
@@ -33,7 +37,7 @@ export const HeaderNav = () => {
         formType={formType}
         />
         <div className='Logo'>
-        <button id='headerMenu'><i><RxHamburgerMenu/></i></button>
+        <button id='headerMenu' onClick={() => dispatch(toggleNav()) }><i>{ navOpen ?  <AiOutlineClose/>: <RxHamburgerMenu/>}</i></button>
         <h1 >Logo</h1>
         </div>
         

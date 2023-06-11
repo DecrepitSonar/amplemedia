@@ -62,17 +62,31 @@ header {
   // width: inherit;
   position: relative;
   overflow: hidden;
+  display: flex;
+  justify-content: space-around;
+  // background-color: #000;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
 }
 .headerPoster {
-  height: 900px;
-  width: inherit;
+  height: 75vh;
+  // width: 75%;
   background-size:cover;
   background-position: top;
   background-attachment: fixed;
   background-repeat: no-repeat;
+  margin: auto;
   // background-image: url(attr(data-image)); 
 }
-
+.headerPosterVideo{
+  // border: 1px solid red;
+  // width: inherit;
+  height: inherit;
+}
 .headerPosterOverlay {
   position: absolute;
   left: 0px;
@@ -88,8 +102,9 @@ header {
 }
 .headerSection {
   width: inherit;
+  height: inherit;
   position: absolute;
-  height: 425px;
+  // height: 425px;
   bottom: 0px;
   // border: 1px solid orange;
   right: 0px;
@@ -404,4 +419,16 @@ section >
   margin: 0 45px;
   border-radius: 75px;
   background-color: #333333;
+}
+@media   ( max-width:  858px ){
+  .headerSection{
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .itemWrapper{
+    display: none;
+  }
+  .headerPoster button{
+    right: 100px;
+  }
 }
