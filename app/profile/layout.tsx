@@ -17,10 +17,9 @@ export const ProfileNavHeader = () => {
       <h1>Profile</h1>
       <div className="library_profile_header" style={{"backgroundImage": `url(https://prophile.nyc3.cdn.digitaloceanspaces.com/images/${auth.headerPosterURL}.jpg)`}}>
         <div className="library_profile_header_avi_container" >
-        <div className="library_profile_header_avi" style={{"backgroundImage": `url(https://prophile.nyc3.cdn.digitaloceanspaces.com/images/${auth.imageURL}.jpg)`}}>
+          <div className="library_profile_header_avi" style={{"backgroundImage": `url(https://prophile.nyc3.cdn.digitaloceanspaces.com/images/${auth.imageURL}.jpg)`}}/>
+          <span className="library_profile_header_avi_username">{auth.username}</span>
         </div>
-        <span className="library_profile_header_avi_username">{auth.username}</span>
-      </div>
       </div>
       
     <div className="library_nav">
