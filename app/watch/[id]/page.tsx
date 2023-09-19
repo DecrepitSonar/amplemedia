@@ -1,10 +1,33 @@
 'use client'
-import { useEffect } from 'react';
-import { IoHeart, IoRadioOutline } from 'react-icons/io5';
+import { useEffect, useState } from 'react';
+import { BiPaperPlane } from 'react-icons/bi';
 import { MdChevronRight } from 'react-icons/md';
-import { Link } from 'react-router-dom';
+import { usePathname} from 'next/navigation'
 
 export default function Watch() {
+
+    const [ video, setVideo ] = useState('')
+    const path = usePathname().split('/')
+
+    const getCurrentVideo = async() => {
+        try{ 
+            console.log( 'retrieving video ')
+            const response = await fetch(`/api/watch/${path[2]}`)
+            console.log( response )
+
+            console.log('transforming reponse ')
+            const data = await response.json()
+            console.log( "response", data)
+            setVideo( data )
+        }
+        catch( err ){
+            console.log( err )
+        }
+    }
+
+    useEffect(() => {
+        getCurrentVideo()
+    }, [])
 
   return (
     <div className='videoPageContainer'>
@@ -14,12 +37,16 @@ export default function Watch() {
                 <div className="videoSection_header">
                     <div className="videoSection_header_overlay">
                         <div className="videoPlayerContainer">
-                            <div className="videoPlayer"/>
+                            { video != null ? 
+                                   <video controls autoPlay className="videoPlayer">
+                                        <source src={video.contentURL}/>
+                                    </video>  : null  
+                            }
                             <div className="videoPlayer_description">
                                 <div className="videoPlayer_description_author">
                                     <div className="videoPlayer_description_author_title">
-                                        <span>This is a placeholder for video title </span>
-                                        <span>Username</span>
+                                        <span>{video.title} </span>
+                                        <span>{video.user}</span>
                                     </div>
                                 </div>
                                 <p className="description">
@@ -37,10 +64,31 @@ export default function Watch() {
         </div>
 
             <div className="sideSection">
-                <div className="recommendations">
-                    <span>You may like</span>
-                    <div className="recommendations_videoCollection">
+                <div className="comments_section_top">
+                    <span>Comments</span>
+                </div>
+                <div className=" comments_sections">
+                    <div className="comment_section_middle">
+
+                        <div className="comment_item_container">
+                                <span>username</span>
+                                <span>This is a comment from a user</span>
+                        </div>
                     </div>
+                </div>
+                <div className="comments_section_bottom">
+                        <div className="comments_section_bottom_inputSection">
+                            <button><i><BiPaperPlane/></i></button>
+                            <input type="text" placeholder='Comment' />
+                        </div>
+                        <div className="comments_section_bottom_actions">
+                            <button>button</button>
+                            <button>button</button>
+                            <button>button</button>
+                            <button>button</button>
+                            <button>button</button>
+                            <button>button</button>
+                        </div>
                 </div>
             </div>
             </section>
@@ -85,14 +133,24 @@ export default function Watch() {
                             </div>
                             <span className="videoCardDescription">title</span>
                         </div>
+
+                        <div className="videoCardContainer">
+                            <div className="videoCard" />
+                            <div className="videoCardHeader" >
+                                <div className="headerAvi" />
+                                <span>user</span>
+                            </div>
+                            <span className="videoCardDescription">title</span>
+                        </div>
                     </div>
                     
                 </section>
                 <div className="user_header">
                         <div className="user_header_avi_container" >
-                            <div className="user_header_avi" />
-                            <span className="user_header_avi_username">username</span>
+                            <div className="user_header_avi" style={{'backgroundImage':  `url(https://prophile.nyc3.cdn.digitaloceanspaces.com/images/${video.userImageURL}.jpg)`}} />
+                            <span className="user_header_avi_username">{video.user}</span>
                         </div>
+                        
                     </div>
         </div>
   )

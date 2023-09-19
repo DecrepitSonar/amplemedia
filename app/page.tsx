@@ -9,7 +9,6 @@ import { PageHeader } from '@/components/PageHeader';
 
 export default function Home() {
   const [ pageData, setPageData ] = useState<PageDatatypes>()
-  const params = useParams()
   const router = useRouter()
 
   const getPageData = async () => {

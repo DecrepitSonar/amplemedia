@@ -49,11 +49,12 @@
     // position: absolute;
     // bottom: 0;
     // margin: 20px;
+    // background-color: #000;
   
   }
   .videoPlayer {
-    height: 600px;
-    // width: 800px;
+    // height: 675px;
+    width: 100%;
     background-color: #333;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -87,12 +88,7 @@
     text-align: start;
     border-top: 0.5px solid rgba($color: #cccc98, $alpha: .2);
   }
-  .commentSection_inputSection {
-    display: flex;
-    margin-top: 20px;
-    font-size: 0.9rem;
-    color: rgba($color: #cccc98, $alpha: .5)
-  }
+
   .description{
     color: #eee;
     font-size: .9rem;
@@ -103,8 +99,78 @@
     width: 600px;
     // margin: 0 20px;
     // border: 1px solid red;
+    // padding: 20px;
     background-color: rgba($color: #000, $alpha: .2);
     border-radius: 10px;
+    display: grid;
+    grid-template-rows: 1fr;
+    position:relative;
+    // overflow: hidden;
+  }
+  .comments_sections{
+    // border: 1px solid red;
+    position: relative
+  }
+  .comments_section_top{
+    padding: 10px;  
+    // height: 50px;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    background-color: rgba($color: #000, $alpha: .2);
+  }
+  .comments_section_top span{
+    width: 100%;
+    // border: 1px solid red;
+  }
+  .comment_section_middle{
+    position: absolute;
+    top: 0px; 
+    bottom: 0px;
+    right: 0px; 
+    left: 0px;
+    margin: 10px;
+  
+    margin-top: 50px;
+    font-size: small;
+  }
+  .comment_item_container{
+    border: 1px solid #212129;
+    background-color:rgba($color: #000, $alpha: .1);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border-radius: 10px;
+  }
+  .comments_section_bottom{
+    // height: 100px; 
+    width: auto;
+    background-color: rgba($color: #000, $alpha: .2);
+  }
+  .comments_section_bottom button{
+    color: #cccc98; 
+    border: 1px solid rgba($color: #cccc98, $alpha: .2);
+    padding: 5px 10px;
+    // margin-right: 10px;;
+    border-radius: 5px;
+  }
+  .comments_section_bottom input{
+    padding: 5px 20px;
+    width: 89%;
+    border-radius: 5px;
+    border: 0;
+  }
+  .comments_section_bottom_inputSection{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .comments_section_bottom_actions{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
   }
 
   .user_header{
@@ -120,7 +186,8 @@
     width: 200px;
     text-align: center;
     // border-radius: 50%;
-    margin: auto
+    margin: auto;
+    
 
   }
   .user_header_avi{
@@ -129,4 +196,7 @@
     background-color: #212129;
     border-radius: 50%;;
     margin-bottom: 20px;
+    background-position: center;
+    background-size: cover;
+    background-position: center;
   }

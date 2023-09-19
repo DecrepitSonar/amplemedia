@@ -1,11 +1,9 @@
 "use client"
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, {useRef } from 'react'
 import {MdHomeFilled } from "react-icons/md"
-import { BiCog } from 'react-icons/bi'
 import {IoAppsSharp, IoBookmarksOutline, IoListOutline, IoRadioButtonOffOutline} from "react-icons/io5"
 import Link from 'next/link'
-import { connectToDB } from '@/utils/database'
 import { useRouter } from 'next/navigation'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/utils/Store'
@@ -38,6 +36,52 @@ export const NavSide = () => {
             <li><Link href="/profile/history"><IoListOutline/> <span>History</span></Link></li>
         </ul>
         <label>Channels</label>
+
+        <div className="aside_user_model">
+            <div className="aside_user_avi"></div>
+            <span >Username</span>
+        </div>
+        <div className="aside_user_model">
+            <div className="aside_user_avi"></div>
+            <span >Username</span>
+        </div>
+        <div className="aside_user_model">
+            <div className="aside_user_avi"></div>
+            <span >Username</span>
+        </div>
+        <div className="aside_user_model">
+           <div className="aside_user_avi"></div>
+            <span >Username</span>
+        </div>
+        <div className="aside_user_model">
+            <div className="aside_user_avi"></div>
+            <span >Username</span>
+        </div>
+        <div className="aside_user_model">
+            <div className="aside_user_avi"></div>
+            <span >Username</span>
+        </div>
+        <div className="aside_user_model">
+            <div className="aside_user_avi"></div>
+            <span >Username</span>
+        </div>
+        <div className="aside_user_model">
+           <div className="aside_user_avi"></div>
+            <span >Username</span>
+        </div>
+        <div className="aside_user_model">
+           <div className="aside_user_avi"></div>
+            <span >Username</span>
+        </div>
+        <div className="aside_user_model">
+           <div className="aside_user_avi"></div>
+            <span >Username</span>
+        </div>
+        <div className="aside_user_model">
+           <div className="aside_user_avi"></div>
+            <span >Username</span>
+        </div>
+
     </aside>
 
     <aside className='mobile_aside' ref={navRef} style={navOpen ? openNav : closeNav}>
