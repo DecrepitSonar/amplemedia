@@ -4,9 +4,23 @@ import { BiPaperPlane } from 'react-icons/bi';
 import { MdChevronRight } from 'react-icons/md';
 import { usePathname} from 'next/navigation'
 
+type Video = {
+    catagory: string,
+    contentURL: string,
+    id: string,
+    live: Boolean,
+    posterURL: string
+    releaseDate: string,
+    title: string,
+    user: string
+    userId: string,
+    userImageURL: string,
+    views: string,
+    _id: string
+}
 export default function Watch() {
 
-    const [ video, setVideo ] = useState('')
+    const [ video, setVideo ] = useState<Video>(null)
     const path = usePathname().split('/')
 
     const getCurrentVideo = async() => {
