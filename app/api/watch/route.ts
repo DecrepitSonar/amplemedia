@@ -1,6 +1,6 @@
 import { connectToDB, client } from "@/utils/database"
 
-export const GET = async (id: String) => {
+export const GET = async (request: Request, {params: params }) => {
 
     try {
         const db = await connectToDB()
