@@ -1,7 +1,7 @@
 import { connectToDB, client } from "@/utils/database"
 
 export const GET = async (request: Request,
-    { params} : { params: { slug: string}}
+    { params} : { params: { id: string}}
     ) =>{
 
     console.log( params )
